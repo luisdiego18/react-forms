@@ -17,10 +17,9 @@ class NewCountry extends Component {
 
 	handleChange = e => this.setState({ [e.target.name]: e.target.value });
 
-	saveCountry = () => {
-		const { country } = this.state;
-		this.props.onAddCountry(country);
-	};
+	// saveCountry = () => {
+	// 	this.props.onAddCountry(this.state.country);
+	// };
 
 	handleClickOpen = () => {
 		this.setState({ open: true });
@@ -30,12 +29,23 @@ class NewCountry extends Component {
 		this.setState({ open: false });
 	};
 
+	saveCountry = () => {
+		const country = prompt('Enter country name');
+		  this.props.onAddCountry(country);
+	  }
+
 	render() {
 		const { open, country } = this.state;
 
 		return (
 			<div className="new-country">
-				<Fab color="primary" aria-label="add" onClick={this.handleClickOpen}>
+				<div className="newCountryButton">
+				<Fab color="primary" aria-label="add" onClick={this.saveCountry}>
+					<AddIcon />
+				</Fab>
+				</div>
+
+				{/* <Fab color="primary" aria-label="add" onClick={this.handleClickOpen}>
 					<AddIcon />
 				</Fab>
 				<Dialog open={open} onClose={this.handleClose}>
@@ -49,7 +59,7 @@ class NewCountry extends Component {
 								type="text"
 								id="country"
 								name="country"
-								value={country}
+								v-model={country}
 								label="Country Name"
 								margin="dense"
 								fullWidth
@@ -59,13 +69,13 @@ class NewCountry extends Component {
 						<DialogActions>
 							<Button onClick={this.handleClose}>Cancel</Button>
 							<Button
-								disabled={country.trim().length === 0}
+								// disabled={country.trim().length === 0}
 								onClick={this.saveCountry}
 							>
 								Save
 							</Button>
 						</DialogActions>
-				</Dialog>
+				</Dialog> */}
 			</div>
 		);
 	}

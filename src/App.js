@@ -102,7 +102,7 @@ class App extends Component {
 							</Grid>
 						))}
 					</Grid>
-					<NewCountry onAddCountry={this.handleNewCountry} countries={this.state.countries}/>
+					<NewCountry onAddCountry={this.handleAddCountry}/>
 				</Container>
 			</div>
 		);
